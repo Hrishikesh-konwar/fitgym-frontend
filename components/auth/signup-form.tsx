@@ -59,7 +59,10 @@ export function SignupForm({ onToggleMode }: SignupFormProps) {
       localStorage.setItem("gymDetails", JSON.stringify(data))
       localStorage.setItem("authToken", token);
       window.location.href = "/dashboard";
+    }else{
+      setIsLoading(false);
     }
+
   }
 
   return (

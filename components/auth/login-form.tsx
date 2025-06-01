@@ -44,6 +44,8 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
       localStorage.setItem("gymDetails", JSON.stringify(data))
       localStorage.setItem("authToken", token);
       window.location.href = "/dashboard";
+    }else{
+      setIsLoading(false);
     }
   }
 
