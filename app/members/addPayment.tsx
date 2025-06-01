@@ -97,6 +97,7 @@ export function AddPaymentForm({
     } catch (err) {
       console.error("Error creating payment:", err);
       setError("Something went wrong. Please try again.");
+    } finally{
       setIsLoading(false);
     }
   }

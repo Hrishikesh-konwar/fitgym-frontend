@@ -81,6 +81,7 @@ export function AddMemberForm({ open, handleClose }: MemberFormProps) {
     } catch (err) {
       console.error("Error creating member:", err);
       setError("Something went wrong. Please try again.");
+    } finally{
       setIsLoading(false);
     }
   }

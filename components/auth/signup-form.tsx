@@ -26,7 +26,7 @@ export function SignupForm({ onToggleMode }: SignupFormProps) {
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
     setError("");
 
     const formData = new FormData(event.currentTarget);
@@ -42,27 +42,30 @@ export function SignupForm({ onToggleMode }: SignupFormProps) {
       return;
     }
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/gyms/createGym`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email_id, password, phone }),
-      }
-    );
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/gyms/createGym`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email_id, password, phone }),
+        }
+      );
 
-    const token = response.headers.get("x-auth-token");
-    const data = await response.json();
-    if (token && data) {
-      localStorage.setItem("gymDetails", JSON.stringify(data))
-      localStorage.setItem("authToken", token);
-      window.location.href = "/dashboard";
-    }else{
+      const token = response.headers.get("x-auth-token");
+      const data = await response.json();
+      if (token && data) {
+        localStorage.setItem("gymDetails", JSON.stringify(data));
+        localStorage.setItem("authToken", token);
+        window.location.href = "/dashboard";
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
       setIsLoading(false);
     }
-
   }
 
   return (
