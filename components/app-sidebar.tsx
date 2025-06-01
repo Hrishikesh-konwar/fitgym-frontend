@@ -52,10 +52,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       className="bg-gray-800 text-white" // removed [&_*] global overrides
       {...props}
     >
-       <SidebarHeader className="bg-gray-800 text-white hover:text-black">
+      <SidebarHeader className="bg-gray-800 text-white hover:text-black">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild >
+            <SidebarMenuButton size="lg" asChild>
               <a
                 href="/dashboard"
                 className="flex items-center gap-2 p-2 rounded text-gray-300 transition-colors duration-200 no-underline hover:no-underline"
@@ -76,9 +76,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       <SidebarContent className="bg-gray-800">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-gray-400">
-            {" "}
-          </SidebarGroupLabel>
+          <SidebarGroupLabel className="text-gray-400"> </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => {
@@ -89,10 +87,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <SidebarMenuButton asChild>
                       <a
                         href={item.url}
-                        className={`flex items-center gap-2 p-2 rounded text-gray-300 transition-colors duration-200 no-underline hover:no-underline ${
+                        className={`flex items-center gap-2 p-2 rounded transition-colors duration-200 no-underline hover:no-underline ${
                           isActive
                             ? "bg-white text-black font-semibold"
-                            : "hover:bg-white hover:text-black"
+                            : "text-gray-300 hover:bg-white hover:text-black"
                         }`}
                       >
                         <item.icon className="w-4 h-4" />
